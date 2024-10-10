@@ -39,7 +39,7 @@ class Synthesizer:
         self.conn.write(data)
         data = self.conn.read(100)
         self.conn.close()
-        print data
+        #print(data)
         data = data.split(' Act ')[1]
         data = data.split(' ')[0]
         return float(data) #in MHz#

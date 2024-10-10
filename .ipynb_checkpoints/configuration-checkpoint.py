@@ -25,9 +25,10 @@ skip_tones_attenuation = 0 #It will not calculate the attenuations for the first
 baseline_attenuation = -44.8 #dBm --> this is the max power level for a flat comb
 
 datadir = Path("/home/mew/data/data_logger/log_kids/") #directory where dirfiles are saved
-setupdir = Path("/home/mew/data/setup/kids/") #directory where array configurations are saved 
+setupdir = Path("/home/mew/data/setup/kids/") #directory where array conf/home/mew/data/setup/kids/sweeps/vna/20231003_GP2v2_140mK_1igurations are saved 
 path_configuration = Path("/home/mew/data/setup/kids/sweeps/target/current/") #default configuration file. It is the current folder, with the latest array configuration.
 transfer_function_file = Path("/src/roach2_readout/transfunc_polyfit_coefficients.npy") #transfer function file
 folder_frequencies = Path("/src/parameters/current")#/home/mistral/src/parameters/OLIMPO_150_480_CURRENT/") #update to MISTRAL and not olimpo. Serve la cartella CURRENT!
 log_dir = Path("/src/roach2_readout/client_logs/")
 path_format = Path("/src/roach2_readout/format_files")
+
