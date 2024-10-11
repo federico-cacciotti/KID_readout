@@ -81,7 +81,6 @@ class roachInterface(object):
         self.test_comb, self.delta = np.linspace(-256.e6, 256.e6, num=400, retstep = True)
         
         # setting up paths
-        # NOT USED self.folder_frequencies=conf.folder_frequencies
         self.datadir = conf.datadir
         self.setupdir = conf.setupdir
         self.vnadir = self.setupdir / "sweeps" / "vna"
@@ -148,7 +147,6 @@ class roachInterface(object):
         #self.nchan = len(self.raw_chan[0])
         logging.info("\n\t\033[33m+++  Activating ROACH interface  +++\033[0m")
         self.fpga = casperfpga.katcp_fpga.KatcpFpga(self.ip,timeout=1200.)
-        self.bitstream = "./mistral_firmware_current.fpg"   # October 2017 from Sam Gordon
         self.dds_shift = 318 # was 305  # this is a number specific to the firmware used. It will change with a new firmware. which number for MISTRAL?
 
         self.dac_samp_freq = 512.0e6
@@ -169,12 +167,18 @@ class roachInterface(object):
         np.random.seed(23578)
         self.phases = np.random.uniform(0., 2.*np.pi, 2000)   #### ATTENZIONE PHASE A pi (ORA NO)
 
+        # check if off resonance tones are specifed in the configuration file
+        if len(conf.OFF_RESONANCE_TONES) > 0:
+            self.ADD_OFF_RESONANCE_TONES = True
+        else:
+            self.ADD_OFF_RESONANCE_TONES = False
+
         self.main_prompt = "\n\t\033[33mBenchmark ROACH Readout\033[0m\n\t\033[35mChoose number and press Enter\033[0m"
-        self.main_opts = ["initialize",
-                "write test comb",
-                "write saved bb freqs",
-                "write saved RF freqs",
-                "print packet info to screen (UDP)",
+        self.main_opts = ["Initialize",
+                "Write test comb",
+                "Write saved bb freqs",
+                "Write saved RF freqs",
+                "Print packet info to screen (UDP)",
                 "VNA sweep, plot and locate (do after 1,2 or 3)",
                 "Locate resonances",
                 "Target sweep and plot",
@@ -324,11 +328,11 @@ class roachInterface(object):
         
         if (self.fpga.is_connected()):
             logging.info("Connection established")
-            self.fpga.upload_to_ram_and_program(self.bitstream)
+            self.fpga.upload_to_ram_and_program(conf.bitstream.as_posix())
         else:
 			logging.critical("FPGA not connected")
 			return 1 
-        logging.info('Uploaded' + str(self.bitstream))
+        logging.info('Uploaded' + str(conf.bitstream.as_posix()))
         
         time.sleep(3)
         return 0
@@ -988,11 +992,14 @@ class roachInterface(object):
 			self.writeQDR(self.test_comb, transfunc=True)
             
         if sweep:
-            logging.info("\nStarting VNA sweep")
-            for freq in tqdm(self.sweep_freqs):
-                if self.v1.set_frequency(2, freq/1.0e6, 0.01):
+            logging.info("\nStarting VNA sweep...")
+            progress_bar = tqdm(self.sweep_freqs, desc="Starting VNA sweep")
+            for freq in progress_bar:
+                if self.v1.set_frequency(2, freq/(1.0e6), 0.01):
                     self.store_UDP(100, freq, save_path.as_posix(), channels=len(self.test_comb))
-                    self.v1.set_frequency(2, center_freq / (1.0e6), 0.01) # LO
+                    self.v1.set_frequency(2, center_freq/(1.0e6), 0.01) # LO
+                    progress_bar.set_description_str("Base band frequency {:.2f} kHz".format(((freq*1.0e-6)*0.5-conf.LO)*1.0e3))
+                    progress_bar.refresh()
             
         if do_plot:
             logging.info("\nPlotting VNA sweep")
@@ -1013,6 +1020,10 @@ class roachInterface(object):
         logging.info("\nStarting target sweep with parameters")
         logging.info("- Half span:\t{:.2f} kHz".format(conf.sweep_span*1.0e-3))
         logging.info("- Step freq:\t{:.2f} kHz".format(conf.sweep_step*1.0e-3))
+        if self.ADD_OFF_RESONANCE_TONES:
+            logging.info("- Off res.:  \t{:s} MHz".format(str(conf.OFF_RESONANCE_TONES)))
+        else:
+            logging.info("- Off res.:  \tno off resonance tones specified")
 
         #self.target_sweep_flag = True
         center_freq = (self.center_freq * 1.0e6 + conf.sweep_offset) * conf.mixer_const #Center freq is in MHz, offset is in Hz
@@ -1100,10 +1111,13 @@ class roachInterface(object):
         
         if sweep:
             logging.info("\nStarting target sweep")
-            for freq in tqdm(sweep_freqs):
-                if self.v1.set_frequency(2, freq/1.0e6, 0.01):
+            progress_bar = tqdm(sweep_freqs, desc="Starting target sweep")
+            for freq in progress_bar:
+                if self.v1.set_frequency(2, freq/(1.0e6), 0.01):
                     self.store_UDP(100, freq, save_path.as_posix(), channels=len(self.bb_target_freqs)) 
-                    self.v1.set_frequency(2, center_freq / (1.0e6), 0.01) # LO
+                    self.v1.set_frequency(2, center_freq/(1.0e6), 0.01) # LO
+                    progress_bar.set_description_str("Base band frequency {:.2f} kHz".format(((freq*1.0e-6)*0.5-conf.LO)*1.0e3))
+                    progress_bar.refresh()
         
         logging.info("\nRunning pipline.py on " + save_path.as_posix())
         # locate centers, rotations, and resonances
@@ -1216,7 +1230,7 @@ class roachInterface(object):
         chan_freqs = np.zeros((channels, len(lo_freqs)))
         new_targs = np.zeros((channels))
         for chan in range(channels):
-			mags[chan] = np.sqrt(Is[:, chan]**2 + Qs[:,chan]**2)
+			mags[chan] = np.sqrt(Is[:, chan]**2 + Qs[:, chan]**2)
 			mags[chan] /= (2**31 - 1)
 			mags[chan] /= ((self.accum_len - 1) / (self.fft_len/2))
 			mags[chan] = 20*np.log10(mags[chan])

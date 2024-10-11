@@ -72,10 +72,6 @@ def main(path, savefile=False):
     lo_freqs = np.load(path + "/sweep_freqs.npy")
     chan_freqs, mags = normalize_and_stack(path, bb_freqs, lo_freqs)
    
-    sweep_step = 1.25 # kHz
-    smoothing_scale = 2500.0 # kHz
-    
-    #filtered = lowpass_cosine( mags, sweep_step, 1./smoothing_scale, 0.1 * (1.0/smoothing_scale))
     filtered = adaptive_iteratively_reweighted_penalized_least_squares_smoothing(mags)
 
     # parametri buoni per MISTRAL 415 v4

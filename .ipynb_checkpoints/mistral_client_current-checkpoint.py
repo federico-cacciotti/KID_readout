@@ -62,7 +62,6 @@ class roachInterface(object):
         print("logging filename")
         log_filename = conf.log_dir.as_posix() + "/"+self.timestring+".log"
         self.log_filename = log_filename
-
         print(log_filename)
         rootLogger = logging.getLogger()
         rootLogger.setLevel(logging.INFO)
@@ -91,7 +90,7 @@ class roachInterface(object):
         self.do_transf = False #provvisorio! Da sistemare.
         #self.test_comb_flag = False
         
-        self.test_comb, self.delta = np.linspace(-256.e6, 256.e6, num=100, retstep = True)
+        self.test_comb, self.delta = np.linspace(-256.e6, 256.e6, num=400, retstep = True)
         
         logging.info("ROACH dirfile name = "+string)
         logging.info("Log file: "+log_filename)
@@ -132,8 +131,8 @@ class roachInterface(object):
         self.center_freq = conf.LO
         self.global_attenuation= 1.0 #need to implement the class for Arduino variable attenuator!
         self.baseline_attenuation = conf.baseline_attenuation
-        self.wavemax = 1.1543e-5 #what is this? Maybe we should increase it for 400 tones.
-        
+        self.wavemax = 1.1543e-5 *2  #what is this? Maybe we should increase it for 400 tones.
+         
         self.zeros = signal.firwin(27, 1.5e6, window="hanning", nyq=128.0e6)
         self.zeros = signal.firwin(29, 1.5e3, window="hanning", nyq=128.0e6)
         self.zeros = self.zeros[1:-1]
@@ -151,10 +150,10 @@ class roachInterface(object):
         # connecting to valon and variable attenuator
         if "skip-serial" not in sys.argv:
             self.connect_to_valon(set_to_default = True)
-            #self.connect_to_arduino(set_to_default = True)
+            self.connect_to_arduino(set_to_default = True)
         else:
             self.connect_to_valon(set_to_default = False)
-            #self.connect_to_arduino(set_to_default = False)
+            self.connect_to_arduino(set_to_default = False)
 
         #self.nchan = len(self.raw_chan[0])
 
@@ -175,6 +174,8 @@ class roachInterface(object):
         '''
         SAMPLING FREQUENCY IS SET HERE
         '''
+        #self.accum_len = (2**17) # For 1953.125 Hz sampling -> MAX
+        #self.accum_len = (2**16) # For 3906.25 Hz sampling -> not good
         self.accum_len = (2**20) # For 244 Hz sampling
         #self.accum_len = (2**21) # For 122.07 Hz sampling
         #self.accum_len = (2**22) # For 61.014 Hz sampling
@@ -518,7 +519,7 @@ class roachInterface(object):
 
             if not random_phase:
                 phase = np.load('/mnt/iqstream/last_phases.npy') 
-#/home/mew/parameters/test
+            
             self.spec = np.zeros(fft_len,dtype='complex')
             self.spec[bins] = self.amps*np.exp(1j*(phase))
             wave = np.fft.ifft(self.spec)
@@ -528,7 +529,8 @@ class roachInterface(object):
             
             I = (wave.real/waveMax)*(amp_full_scale)*self.global_attenuation  
             Q = (wave.imag/waveMax)*(amp_full_scale)*self.global_attenuation  
-            
+            np.save("/home/mew/wave_I.npy", I)
+            np.save("/home/mew/wave_Q.npy", Q)
         else:
             fft_len = (self.LUTbuffer_len/self.fft_len)
             bins = self.fft_bin_index(freqs, fft_len, samp_freq)
@@ -718,7 +720,6 @@ class roachInterface(object):
         except OSError:
                 pass
         command_cleanlink = "rm -f "+tf_path+'current'
-
         os.system(command_cleanlink)
         command_linkfile = "ln -f -s " + save_path +" "+ tf_path+'current'
         os.system(command_linkfile)
@@ -768,7 +769,7 @@ class roachInterface(object):
     def stream_UDP(self,chan,Npackets):
         self.fpga.write_int('GbE_pps_start', 1)
         count = 0
-        while count < Npackets:
+        while count < Npa20240412_170903ckets:
             packet = self.s.recv(8234) # total number of bytes including 42 byte header
             data = np.fromstring(packet[42:],dtype = '<i').astype('float')
             forty_two = (np.fromstring(packet[-16:-12],dtype = '>I'))
@@ -810,7 +811,9 @@ class roachInterface(object):
         logging.info("Creating new current folder with command:"+command_linkfile)
 
         os.system(command_linkfile)
-        shutil.copy(conf.path_format.as_posix() + "/format_complex", save_path + "/format")
+
+        shutil.copy(conf.path_format.as_posix() + "/format", save_path + "/format")
+        #shutil.copy(conf.path_format.as_posix() + "/format_complex", save_path + "/format") # prima c'era questa linea F.C.
         #shutil.copy(conf.path_complex.as_posix() + "/format_extra", save_path + "/format_extra")
         
         '''
@@ -827,6 +830,8 @@ class roachInterface(object):
         fo_I = map(lambda x: open(x, "ab"), nfo_I)
         fo_Q = map(lambda y: open(y, "ab"), nfo_Q)
         fo_time = open(save_path + "/time", "ab")
+
+        fo_count = open(save_path + "/packet_count", "ab")	
         count = 0
         try:
             logging.info("Writing format_time file")
@@ -935,7 +940,7 @@ class roachInterface(object):
         # df
         plot2 = fig.add_subplot(212)
         plot2.set_ylabel('Hz')
-
+        line2, = plot2.plot(np.arange(Npackets), np.zeros(Npackets), 'b-', linewidth = 1)
         plt.grid()
         plt.xlabel('Packet #', fontsize = 20)
         plt.show(block = False)
@@ -963,8 +968,6 @@ class roachInterface(object):
                                 Q = data[512 + (chan/2)]    
                         phases[packet_count] = np.arctan2([Q],[I])
                         if (count and packet_count) == 0:
- + bb_freqs[chan])/1.0e6 #era lo_freqs/2
-
                                 I0 = I
                                 Q0 = Q
                         delta_I = I - I0 	
@@ -974,7 +977,6 @@ class roachInterface(object):
                 avg_phase = np.round(np.mean(phases),5)
                 avg_df = np.round(np.mean(df[1:]))
                 avg_dfbyf = avg_df / chan_freq
- + bb_freqs[chan])/1.0e6 #era lo_freqs/2
 
                 plot1.set_ylim((np.min(phases) - 1.0e-3,np.max(phases)+1.0e-3))
                 plot2.set_ylim((np.min(df[1:]) - 1.0e-3,np.max(df[1:])+1.0e-3))
@@ -994,7 +996,8 @@ class roachInterface(object):
 
         self.do_transf = True
 
-        center_freq = self.center_freq*1.e6
+        center_freq = self.center_freq*1.e6*conf.mixer_const
+        print("center_freq=",center_freq)
         sweep_path = self.setupdir / "sweeps" / "vna"
            
         if path_current:
@@ -1015,9 +1018,9 @@ class roachInterface(object):
         self.v1.set_frequency(2, center_freq/1.0e6, 0.01)
         span = self.delta
 
-        start = center_freq - (span/2)   # era (span/2)
-        stop  = center_freq + (span/2)   # era (span/2)
-        step  = conf.vna_step#1.25e3        # era senza *2.0
+        start = center_freq - (span/2) * conf.mixer_const  # era (span/2)
+        stop  = center_freq + (span/2) * conf.mixer_const  # era (span/2)
+        step  = conf.vna_step * conf.mixer_const #1.25e3        # era senza *2.0
         sweep_freqs = np.arange(start, stop, step)
         self.sweep_freqs = np.round(sweep_freqs/step)*step
         print "LO freqs =", self.sweep_freqs
@@ -1032,7 +1035,7 @@ class roachInterface(object):
                 self.writeQDR(self.test_comb, transfunc=True)
         if sweep:
                 for freq in tqdm.tqdm(self.sweep_freqs):
-                    #print 'Sweep freq =', freq/1.0e6
+                    print('Sweep freq =', freq/1.0e6)
                     if self.v1.set_frequency(2, freq/1.0e6, 0.01):
                         #time.sleep(1)	    	
                         self.store_UDP(100,freq,save_path,channels=len(self.test_comb)) 
@@ -1062,7 +1065,7 @@ class roachInterface(object):
 
         #self.target_sweep_flag = True
         target_path = self.setupdir.as_posix()+'/sweeps/target/' 
-        center_freq = (self.center_freq * 1.e6 + conf.sweep_offset) #Center frequ is in MHz, offset is in Hz
+        center_freq = (self.center_freq * 1.e6 + conf.sweep_offset) * conf.mixer_const #Center frequ is in MHz, offset is in Hz
         print(center_freq)   
         if path_current == True:
                 vna_path = self.setupdir.as_posix()+'/sweeps/target/current'
@@ -1071,6 +1074,8 @@ class roachInterface(object):
                 logging.info("Default sweep_dir:", sweep_dir)
         else:
             print "roach_test: /home/mew/parameters/test"
+            print "target directory: /home/mew/data/setup/kids/sweeps/target/"
+            print "VNA directory: /home/mew/data/setup/kids/sweeps/vna/"
             vna_path = raw_input('Absolute path to VNA sweep dir ? ')
 
             sweep_dir = raw_input('Insert new target sweep subdir to ' + self.setupdir.as_posix()+ '/sweeps/target/ (eg. '+self.timestring+') Press enter for defualt:')
@@ -1131,16 +1136,16 @@ class roachInterface(object):
         logging.info("saving target_freqs.dat at path:"+ save_path+"/target_freqs.dat")
         np.savetxt(save_path + '/target_freqs.dat', self.target_freqs) #dovrebbe salvare anche le ampiezze
         
-        self.bb_target_freqs = ((self.target_freqs*1.0e6) - center_freq)
-        upconvert = (self.bb_target_freqs + center_freq) / conf.mixer_const / 1.0e6
+        self.bb_target_freqs = ((self.target_freqs*1.0e6) - center_freq/conf.mixer_const)
+        upconvert = (self.bb_target_freqs + center_freq) / 1.0e6
         logging.info("RF tones ="+ np.array2string(upconvert))
         self.v1.set_frequency(2,center_freq / (1.0e6), 0.01) # LO
         logging.info("Target baseband freqs (MHz) ="+ str(self.bb_target_freqs/1.0e6))
         
-        span = conf.sweep_span
+        span = conf.sweep_span * conf.mixer_const
         start = center_freq - (span)  # era (span/2)
         stop = center_freq + (span)   # era (span/2) 
-        step = conf.sweep_step #1.25e3 * 2.                 # era senza   
+        step = conf.sweep_step * conf.mixer_const #1.25e3 * 2.                 # era senza   
         sweep_freqs = np.arange(start, stop, step)
         sweep_freqs = np.round(sweep_freqs/step)*step
         nsteps = len(sweep_freqs)
@@ -1166,7 +1171,6 @@ class roachInterface(object):
                 
                 logging.info("Sweep step="+str(freq))
                 if self.v1.set_frequency(2, freq/1.0e6, 0.01):
- + bb_freqs[chan])/1.0e6 #era lo_freqs/2
 
                     self.store_UDP(100,freq,save_path,channels=len(self.bb_target_freqs)) 
                     self.v1.set_frequency(2,center_freq / (1.0e6), 0.01) # LO
@@ -1250,7 +1254,7 @@ class roachInterface(object):
         bb_freqs = np.load(path + '/bb_freqs.npy')
         rf_freqs = np.zeros((len(bb_freqs),len(sweep_freqs)))
         for chan in range(len(bb_freqs)):
-                rf_freqs[chan] = ((sweep_freqs) + bb_freqs[chan])/1.0e6 #era sweep_freqs/2
+                rf_freqs[chan] = ((sweep_freqs)/conf.mixer_const + bb_freqs[chan])/1.0e6 #era sweep_freqs/2
 
         Q = np.reshape(np.transpose(Qs),(len(Qs[0])*len(sweep_freqs)))
         I = np.reshape(np.transpose(Is),(len(Is[0])*len(sweep_freqs)))
@@ -1295,7 +1299,7 @@ class roachInterface(object):
                 mags[chan] /= (2**31 - 1)
                 mags[chan] /= ((self.accum_len - 1) / (self.fft_len/2))
                 mags[chan] = 20*np.log10(mags[chan])
-                chan_freqs[chan] = (lo_freqs + bb_freqs[chan])/1.0e6
+                chan_freqs[chan] = (lo_freqs/conf.mixer_const + bb_freqs[chan])/1.0e6
 
         #mags = np.concatenate((mags[len(mags)/2:],mags[:len(mags)/2]))
         #bb_freqs = np.concatenate(bb_freqs[len(b_freqs)/2:],bb_freqs[:len(bb_freqs)/2]))
@@ -1548,7 +1552,7 @@ class roachInterface(object):
                 time.sleep(0.7)
                 if self.do_transf == True:
                       self.writeQDR(self.cold_array_bb, transfunc = True)
-                else:/home/mew/parameters/test
+                else:
                       self.writeQDR(self.cold_array_bb)
 
             if opt == 8:
@@ -1595,7 +1599,6 @@ class roachInterface(object):
 
                 try:
                         self.dirfile_all_chan_phase_centered(nchannel)
- + bb_freqs[chan])/1.0e6 #era lo_freqs/2
 
         #		self.dirfile_phase_centered(time_interval)
                 except KeyboardInterrupt:
@@ -1627,7 +1630,6 @@ class roachInterface(object):
                 if "current" in sys.argv:
                     self.radii = np.load(self.path_configuration.as_posix() + "/radii.npy")
                     self.centers = np.load(self.path_configuration.as_posix() + "/centers.npy")
- + bb_freqs[chan])/1.0e6 #era lo_freqs/2
 
                     self.rotations = np.load(self.path_configuration.as_posix()+"/rotations.npy")
 
@@ -1879,6 +1881,7 @@ UNUSED FUNCTIONS ARE HERE
 
 
                     count += 1
+                    pt
 
                     if(count/20 == count/20.):
                         fo.flush()
