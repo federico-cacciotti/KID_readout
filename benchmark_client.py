@@ -164,12 +164,9 @@ class roachInterface(object):
                 "Write saved bb frequencies",
                 "Write saved RF frequencies",
                 "Print packet info to screen (UDP)",
-                "VNA sweep, plot and locate (do after 1, 2 or 3)",
+                "VNA sweep, plot and locate",
                 "Locate resonances",
                 "Target sweep and plot",
-                "Save dirfile for all channels (I, Q, Ph)",
-                "Save dirfile for all channels using centered phase (I, Q, Ph)",
-                "For more than 50 channels: save dirfile of average I, Q, Ph for all chan",
                 "Set global attenuation",
                 "Set path with freqs, centers, radii, rotations",
                 "Save dirfile for all channels in complex format",
@@ -1197,6 +1194,13 @@ class roachInterface(object):
         np.save(os.path.join(save_path,Q_file), np.mean(Q_buffer[skip_packets:], axis = 0)) 
         return 
 
+    def ADC_to_dB(self, I, Q):
+        mag = np.sqrt(I**2 + Q**2)
+        mag /= conf.ADC_MAX_AMPLITUDE
+        mag /= ((conf.ACCUMULATION_LENGTH - 1) / (conf.FFT_LENGTH/2))
+        mag = 20*np.log10(mag)
+        return mag
+
     def plot_vna(self, path):
         sweep_freqs, Is, Qs = ri.open_stored(path)
         sweep_freqs = np.load(path + '/sweep_freqs.npy')
@@ -1207,11 +1211,8 @@ class roachInterface(object):
 
         Q = np.reshape(np.transpose(Qs), (len(Qs[0])*len(sweep_freqs)))
         I = np.reshape(np.transpose(Is), (len(Is[0])*len(sweep_freqs)))
-        mag = np.sqrt(I**2 + Q**2)
-        mag /= conf.ADC_MAX_AMPLITUDE
-        mag /= ((conf.ACCUMULATION_LENGTH - 1) / (conf.FFT_LENGTH/2))
-        mag = 20*np.log10(mag)
-        #mag = np.concatenate((mag[len(mag)/2:],mag[:len(mag)/2]))
+        mag = self.ADC_to_dB(I, Q)
+        
         rf_freqs = np.hstack(rf_freqs)
         rll_chanf_freqs = np.concatenate((rf_freqs[len(rf_freqs)/2:], rf_freqs[:len(rf_freqs)/2]))
 
@@ -1240,11 +1241,8 @@ class roachInterface(object):
         chan_freqs = np.zeros((channels, len(lo_freqs)))
         new_targs = np.zeros((channels))
         for chan in range(channels):
-			mags[chan] = np.sqrt(Is[:, chan]**2 + Qs[:, chan]**2)
-			mags[chan] /= conf.ADC_MAX_AMPLITUDE
-			mags[chan] /= ((conf.ACCUMULATION_LENGTH - 1) / (conf.FFT_LENGTH/2))
-			mags[chan] = 20*np.log10(mags[chan])
-			chan_freqs[chan] = (lo_freqs/conf.MIXER_CONST + bb_freqs[chan])/1.0e6
+            mags[chan] = self.ADC_to_dB(Is[:, chan], Qs[:, chan])
+            chan_freqs[chan] = (lo_freqs/conf.MIXER_CONST + bb_freqs[chan])/1.0e6
         
         new_targs = [chan_freqs[chan][np.argmin(mags[chan])] for chan in range(channels)]
 
@@ -1398,7 +1396,6 @@ class roachInterface(object):
                 self.initialize() 
 				
             elif opt == 1:
-                #(can be deleted) self.upconvert = ((self.test_comb + (self.center_freq)*1.0e6))/1.0e6
                 print("Writing test comb ({:d} tones)".format(conf.NUMBER_OF_TEST_TONES))
                 self.writeQDR(self.test_comb, transfunc = False)
 			
@@ -1446,45 +1443,15 @@ class roachInterface(object):
 					self.writeQDR(self.cold_array_bb, transfunc = True)
                 else:
 					self.writeQDR(self.cold_array_bb)
-
+					
             elif opt == 8:
-                nchannel=len(self.cold_array_bb)	
-                print("nchannles:", nchannel)
-                try:
-					self.dirfile_all_chan(nchannel)
-                except KeyboardInterrupt:
-					pass 
-
-            elif opt == 9:
-                if self.path_configuration=='':
-                    print("Array configuration (freqs, centers, radii and rotations) undefined")
-                    self.path_configuration = raw_input("Absolute path to a folder with freqs, centers, radii and rotations (e.g. /data/mistral/setup/kids/sweeps/target/current)")
-                    self.array_configuration()
-                else: 
-                    print("Using array configuration from" , self.path_configuration)
-                nchannel=len(self.radii)
-                #nchannel=input('number of channels?')#aggiunto 09082017 AP
-                print("nchannles:", nchannel)
-                try:
-					self.dirfile_all_chan_phase_centered(nchannel)
-                except KeyboardInterrupt:
-					pass 
-					
-            elif opt == 10:
-                time_interval = input('Time interval (s) ? ')
-                try:
-					self.dirfile_avg_chan(time_interval)	
-                except KeyboardInterrupt:
-					pass 
-					
-            elif opt == 11:
                 self.global_attenuation=input("Insert global attenuation (decimal, <1.0, e.g 0.01)")
 
-            elif opt == 12:
+            elif opt == 9:
                 self.path_configuration = raw_input("Absolute path to a folder with freqs, centers, radii and rotations (e.g. /data/mistral/setup/kids/sweeps/target/current)")
                 self.array_configuration()
 
-            elif opt == 13:
+            elif opt == 10:
                 if self.path_configuration=='':
 					print("Array configuration (freqs, centers, radii and rotations) undefined")
 					self.path_configuration = raw_input("Absolute path to a folder with freqs, centers, radii and rotations (e.g.  /data/mistral/setup/kids/sweeps/target/current)")
@@ -1503,15 +1470,15 @@ class roachInterface(object):
                 except KeyboardInterrupt:
 					pass 
 
-            elif opt == 14:
-                path_to_vna = raw_input("Absolute path to a VNA folder (e.g. /home/mew/data/setup/kids/sweeps/vna/VNA_NAME)")
+            elif opt == 11:
+                path_to_vna = raw_input("Absolute path to a VNA folder (e.g. /home/mew/data/setup/kids/sweeps/vna/current)")
                 self.plot_vna(path_to_vna)
                 
-            elif opt == 15:
-                path_to_target = raw_input("Absolute path to a Target folder (e.g. /home/mew/data/setup/kids/sweeps/target/TARGET_NAME)")
+            elif opt == 12:
+                path_to_target = raw_input("Absolute path to a Target folder (e.g. /home/mew/data/setup/kids/sweeps/target/current)")
                 self.plot_targ(path_to_target)
 
-            elif opt == 16:
+            elif opt == 13:
                 sys.exit()
                 
             else:
