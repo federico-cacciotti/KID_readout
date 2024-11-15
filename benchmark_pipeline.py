@@ -59,7 +59,7 @@ class pipeline(object):
                 indexmin = minima[0][argmin_distance]
             
             target_freq = self.target_freqs[ii]
-            self.freqs = target_freq + (self.lo_freqs/conf.mixer_const*1.0e-6 - conf.LO)       
+            self.freqs = target_freq + (self.lo_freqs/conf.MIXER_CONST*1.0e-6 - conf.LO)       
             self.target_freqs_out[ii] = self.freqs[indexmin]
             self.indexmin[ii] = indexmin
     
