@@ -40,7 +40,7 @@ import variable_attenuator as vatt
 
 import configuration as conf
 
-version = "0.1"
+version = "1.0"
 version_string = "\033[35mBenchmark readout client\nVersion {:s}\033[0m\n".format(version)
 
 np.set_printoptions(threshold=sys.maxsize)
@@ -1043,13 +1043,14 @@ class roachInterface(object):
         logging.info("\nStarting target sweep with parameters")
         logging.info("- Half span:\t{:.2f} kHz".format(conf.TARGET_HSPAN*1.0e-3))
         logging.info("- Step freq:\t{:.2f} kHz".format(conf.TARGET_STEP*1.0e-3))
+        logging.info("- Offset freq:\t{:.2f} kHz".format(conf.TARGET_OFFSET*1.0e-3))
         if self.ADD_OFF_RESONANCE_TONES:
             logging.info("- Off res.:  \t{:s} MHz".format(str(conf.OFF_RESONANCE_TONES)))
         else:
             logging.info("- Off res.:  \tno off resonance tones specified")
 
         #self.target_sweep_flag = True
-        center_freq = (self.center_freq * 1.0e6 + conf.TARGET_OFFSET) * conf.MIXER_CONST
+        center_freq = (self.center_freq * 1.0e6) * conf.MIXER_CONST
         self.print_useful_paths()        
         vna_path = raw_input('\nAbsolute path to VNA sweep dir ? ')
 
@@ -1075,7 +1076,7 @@ class roachInterface(object):
                 self.target_freqs, self.amps = np.loadtxt(os.path.join(vna_path, 'target_freqs.dat'), unpack=True)
                 logging.info("Loaded target_freqs.dat file with freqs and amps")
             except:
-                self.target_freqs= np.loadtxt(os.path.join(vna_path, 'target_freqs.dat'), unpack=True)
+                self.target_freqs = np.loadtxt(os.path.join(vna_path, 'target_freqs.dat'), unpack=True)
                 logging.info("Loaded target_freqs.dat file without amps")
         
         if os.path.exists(self.targetcurrentdir.as_posix()):
@@ -1083,6 +1084,9 @@ class roachInterface(object):
             os.remove(self.targetcurrentdir.as_posix()) # that removes the symlink
         logging.info("Updating symlink to current directory...")
         os.symlink(save_path.as_posix(), self.targetcurrentdir.as_posix())
+
+        # add frequency offset
+        self.target_freqs = self.target_freqs + conf.TARGET_OFFSET*1.0e-6
         
         logging.info("\nSaving target_freqs.dat at path:\t" + (save_path / "target_freqs.dat").as_posix())
         np.savetxt((save_path / "target_freqs.dat").as_posix(), self.target_freqs)
@@ -1124,8 +1128,10 @@ class roachInterface(object):
                 progress_bar.refresh()
         
         logging.info("\nRunning pipline.py on " + save_path.as_posix())
+        
         # locate centers, rotations, and resonances
         pipeline(save_path.as_posix())
+        
         # includes make_format	
         self.array_configuration() 
 

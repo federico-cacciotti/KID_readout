@@ -29,7 +29,7 @@ def normalize_and_stack(path, bb_freqs, lo_freqs):
 
     for chan in channels:        
         mag[chan] = (np.sqrt(chan_I[:,chan]**2 + chan_Q[:,chan]**2)) 
-        chan_freq[chan] = (lo_freqs/conf.mixer_const+ bb_freqs[chan])/1.0e6 #era lo_freqs/2
+        chan_freq[chan] = (lo_freqs/conf.MIXER_CONST+ bb_freqs[chan])/1.0e6 #era lo_freqs/2
     
     # normalization and conversion in dB   
     for chan in channels:
@@ -76,8 +76,8 @@ def main(path, savefile=False):
 
     # parametri buoni per MISTRAL 415 v4
     peak_width = (1, 150.0)
-    peak_height = (4.5, 30)#5 # era 1.3 sul GP5v2 montato in MISTRAL
-    peak_prominence = (2, 30)
+    peak_height = (4.5, 50)#5 # era 1.3 sul GP5v2 montato in MISTRAL
+    peak_prominence = (2, 50)
     peaks, _ = find_peaks(-(mags-filtered), width=peak_width, prominence=peak_prominence, height=peak_height)
                                        
     target_freqs = chan_freqs[peaks]
