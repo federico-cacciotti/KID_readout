@@ -41,6 +41,7 @@ UDP_PACKET_HEADER = 42            # UDP packet header in bytes
 
 
 ####  PATHS  ####
+'''
 datadir = Path("/home/mew/data/data_logger/log_kids/")  # directory where dirfiles are saved
 setupdir = Path("/home/mew/data/setup/kids/")           # directory where array configurations are saved 
 path_configuration = Path("/home/mew/data/setup/kids/sweeps/target/current/") # default configuration file. It is the current folder, with the latest array configuration.
@@ -48,6 +49,18 @@ transfer_function_file = Path("/src/roach2_readout/transfunc_polyfit_coefficient
 log_dir = Path("/src/roach2_readout/client_logs/")               # directory where the client log file is saved
 path_format = Path("/src/roach2_readout/format_files")           # directory containing the format files for the dirfile standard
 bitstream = Path("/src/roach2_readout/benchmark_firmware.fpg")   # October 2017 from Sam Gordon
+'''
+
+#### LOCAL PATHS ####
+datadir = Path("/media/federico/DATA/kids_acquisition_data/data_logger/")  # directory where dirfiles are saved
+setupdir = Path("/media/federico/DATA/kids_acquisition_data/")           # directory where array configurations are saved 
+path_configuration = Path("/media/federico/DATA/kids_acquisition_data/target/current/") # default configuration file. It is the current folder, with the latest array configuration.
+transfer_function_file = Path("/src/roach2_readout/transfunc_polyfit_coefficients.npy") # transfer function file
+log_dir = Path("/home/federico/Documents/GitHub/KID_readout/logs/")               # directory where the client log file is saved
+path_format = Path("/home/federico/Documents/GitHub/KID_readout/format_files/")           # directory containing the format files for the dirfile standard
+bitstream = Path("/home/federico/Documents/GitHub/KID_readout/benchmark_firmware.fpg")   # October 2017 from Sam Gordon
+
+
 
 # DEPRECATED
 #valon_port = Path("/dev/ttyUSB")   # port for the valon

@@ -1,0 +1,509 @@
+[2024-12-20 17:46:39,079] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 17:46:39,079] - INFO - Paths:
+[2024-12-20 17:46:39,079] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 17:46:39,079] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 17:46:39,079] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 17:46:39,079] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 17:46:39,079] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 17:46:39,079] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 17:46:39,079] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 17:46:39,079] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 17:46:39,079] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 17:46:39,079] - INFO - 	Dirfile name: dirfile_20241220_174639
+[2024-12-20 17:46:39,079] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 17:46:39,079] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:48:36,782] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 17:48:36,782] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 17:48:36,782] - INFO - Paths:
+[2024-12-20 17:48:36,782] - INFO - Paths:
+[2024-12-20 17:48:36,782] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 17:48:36,782] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 17:48:36,782] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 17:48:36,782] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 17:48:36,782] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 17:48:36,782] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 17:48:36,782] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 17:48:36,782] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 17:48:36,783] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 17:48:36,783] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 17:48:36,783] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 17:48:36,783] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 17:48:36,783] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 17:48:36,783] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 17:48:36,783] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 17:48:36,783] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 17:48:36,783] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 17:48:36,783] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 17:48:36,783] - INFO - 	Dirfile name: dirfile_20241220_174836
+[2024-12-20 17:48:36,783] - INFO - 	Dirfile name: dirfile_20241220_174836
+[2024-12-20 17:48:36,783] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 17:48:36,783] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 17:48:36,783] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:48:36,783] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:51:03,915] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 17:51:03,915] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 17:51:03,915] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 17:51:03,916] - INFO - Paths:
+[2024-12-20 17:51:03,916] - INFO - Paths:
+[2024-12-20 17:51:03,916] - INFO - Paths:
+[2024-12-20 17:51:03,916] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 17:51:03,916] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 17:51:03,916] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 17:51:03,916] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 17:51:03,916] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 17:51:03,916] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 17:51:03,916] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 17:51:03,916] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 17:51:03,916] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 17:51:03,916] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 17:51:03,916] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 17:51:03,916] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 17:51:03,916] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 17:51:03,916] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 17:51:03,916] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 17:51:03,916] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 17:51:03,916] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 17:51:03,916] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 17:51:03,916] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 17:51:03,916] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 17:51:03,916] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 17:51:03,916] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 17:51:03,916] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 17:51:03,916] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 17:51:03,916] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 17:51:03,916] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 17:51:03,916] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 17:51:03,917] - INFO - 	Dirfile name: dirfile_20241220_175103
+[2024-12-20 17:51:03,917] - INFO - 	Dirfile name: dirfile_20241220_175103
+[2024-12-20 17:51:03,917] - INFO - 	Dirfile name: dirfile_20241220_175103
+[2024-12-20 17:51:03,917] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 17:51:03,917] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 17:51:03,917] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 17:51:03,917] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:51:03,917] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:51:03,917] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:51:03,917] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 17:51:03,917] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 17:51:03,917] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 17:51:03,917] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:51:03,917] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:51:03,917] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:51:03,917] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 17:51:03,917] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 17:51:03,917] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 17:51:03,917] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:51:03,917] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:51:03,917] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:51:03,917] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 17:51:03,917] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 17:51:03,917] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 17:51:03,918] - INFO - Waiting for option: 
+[2024-12-20 17:51:03,918] - INFO - Waiting for option: 
+[2024-12-20 17:51:03,918] - INFO - Waiting for option: 
+[2024-12-20 17:51:06,171] - INFO - Waiting for option: 
+[2024-12-20 17:51:06,171] - INFO - Waiting for option: 
+[2024-12-20 17:51:06,171] - INFO - Waiting for option: 
+[2024-12-20 17:51:24,036] - INFO - Waiting for option: 
+[2024-12-20 17:51:24,036] - INFO - Waiting for option: 
+[2024-12-20 17:51:24,036] - INFO - Waiting for option: 
+[2024-12-20 17:51:25,288] - INFO - Waiting for option: 
+[2024-12-20 17:51:25,288] - INFO - Waiting for option: 
+[2024-12-20 17:51:25,288] - INFO - Waiting for option: 
+[2024-12-20 17:51:26,207] - INFO - Waiting for option: 
+[2024-12-20 17:51:26,207] - INFO - Waiting for option: 
+[2024-12-20 17:51:26,207] - INFO - Waiting for option: 
+[2024-12-20 17:51:26,860] - INFO - Waiting for option: 
+[2024-12-20 17:51:26,860] - INFO - Waiting for option: 
+[2024-12-20 17:51:26,860] - INFO - Waiting for option: 
+[2024-12-20 17:51:27,335] - INFO - Waiting for option: 
+[2024-12-20 17:51:27,335] - INFO - Waiting for option: 
+[2024-12-20 17:51:27,335] - INFO - Waiting for option: 
+[2024-12-20 17:52:27,995] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 17:52:27,995] - INFO - Paths:
+[2024-12-20 17:52:27,995] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 17:52:27,995] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 17:52:27,995] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 17:52:27,995] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 17:52:27,995] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 17:52:27,995] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 17:52:27,995] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 17:52:27,995] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 17:52:27,995] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 17:52:27,995] - INFO - 	Dirfile name: dirfile_20241220_175227
+[2024-12-20 17:52:27,995] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 17:52:27,995] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:52:27,996] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 17:52:27,996] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:52:27,996] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 17:52:27,996] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:52:27,996] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 17:52:27,996] - INFO - Waiting for option: 
+[2024-12-20 17:52:33,767] - INFO - Waiting for option: 
+[2024-12-20 17:52:36,130] - INFO - Waiting for option: 
+[2024-12-20 17:52:37,032] - INFO - Waiting for option: 
+[2024-12-20 17:52:37,576] - INFO - Waiting for option: 
+[2024-12-20 17:52:40,029] - INFO - Waiting for option: 
+[2024-12-20 17:52:41,506] - INFO - Waiting for option: 
+[2024-12-20 17:52:42,063] - INFO - Waiting for option: 
+[2024-12-20 17:52:42,534] - INFO - Waiting for option: 
+[2024-12-20 17:52:42,911] - INFO - Waiting for option: 
+[2024-12-20 17:52:43,268] - INFO - Waiting for option: 
+[2024-12-20 17:52:43,657] - INFO - Waiting for option: 
+[2024-12-20 17:53:16,193] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 17:53:16,193] - INFO - Paths:
+[2024-12-20 17:53:16,193] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 17:53:16,193] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 17:53:16,193] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 17:53:16,193] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 17:53:16,193] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 17:53:16,193] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 17:53:16,193] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 17:53:16,193] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 17:53:16,193] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 17:53:16,193] - INFO - 	Dirfile name: dirfile_20241220_175316
+[2024-12-20 17:53:16,193] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 17:53:16,193] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:53:16,194] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 17:53:16,194] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:53:16,194] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 17:53:16,194] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:53:16,194] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 17:53:16,194] - INFO - Waiting for option: 
+[2024-12-20 17:54:38,176] - INFO - Waiting for option: 
+[2024-12-20 17:58:02,472] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 17:58:02,472] - INFO - Paths:
+[2024-12-20 17:58:02,472] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 17:58:02,472] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 17:58:02,473] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 17:58:02,473] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 17:58:02,473] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 17:58:02,473] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 17:58:02,473] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 17:58:02,473] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 17:58:02,473] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 17:58:02,473] - INFO - 	Dirfile name: dirfile_20241220_175802
+[2024-12-20 17:58:02,473] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 17:58:02,473] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:58:02,473] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 17:58:02,473] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:58:02,473] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 17:58:02,473] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:58:02,473] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 17:58:02,473] - INFO - Waiting for option: 
+[2024-12-20 17:58:05,061] - INFO - Waiting for option: 
+[2024-12-20 17:58:38,948] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 17:58:38,948] - INFO - Paths:
+[2024-12-20 17:58:38,948] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 17:58:38,948] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 17:58:38,948] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 17:58:38,948] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 17:58:38,948] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 17:58:38,948] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 17:58:38,948] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 17:58:38,948] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 17:58:38,948] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 17:58:38,948] - INFO - 	Dirfile name: dirfile_20241220_175838
+[2024-12-20 17:58:38,948] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 17:58:38,948] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:58:38,948] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 17:58:38,948] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:58:38,948] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 17:58:38,948] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:58:38,948] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 17:58:38,948] - INFO - Waiting for option: 
+[2024-12-20 17:58:40,109] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 17:58:40,110] - INFO - Waiting for option: 
+[2024-12-20 18:00:29,113] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 18:00:29,113] - INFO - Paths:
+[2024-12-20 18:00:29,113] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 18:00:29,113] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 18:00:29,113] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 18:00:29,113] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 18:00:29,113] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 18:00:29,113] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 18:00:29,113] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 18:00:29,113] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 18:00:29,113] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 18:00:29,113] - INFO - 	Dirfile name: dirfile_20241220_180029
+[2024-12-20 18:00:29,113] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 18:00:29,113] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:29,113] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 18:00:29,113] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:29,113] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 18:00:29,113] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:29,113] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 18:00:29,113] - INFO - Waiting for option: 
+[2024-12-20 18:00:32,017] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 18:00:32,017] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 18:00:32,017] - INFO - Paths:
+[2024-12-20 18:00:32,017] - INFO - Paths:
+[2024-12-20 18:00:32,017] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 18:00:32,017] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 18:00:32,017] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 18:00:32,017] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 18:00:32,017] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 18:00:32,017] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 18:00:32,017] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 18:00:32,017] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 18:00:32,017] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 18:00:32,017] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 18:00:32,017] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 18:00:32,017] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 18:00:32,017] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 18:00:32,017] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 18:00:32,017] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 18:00:32,017] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 18:00:32,017] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 18:00:32,017] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 18:00:32,017] - INFO - 	Dirfile name: dirfile_20241220_180032
+[2024-12-20 18:00:32,017] - INFO - 	Dirfile name: dirfile_20241220_180032
+[2024-12-20 18:00:32,017] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 18:00:32,017] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 18:00:32,017] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:32,017] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:32,017] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 18:00:32,017] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 18:00:32,018] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:32,018] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:32,018] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 18:00:32,018] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 18:00:32,018] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:32,018] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:32,018] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 18:00:32,018] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 18:00:32,018] - INFO - Waiting for option: 
+[2024-12-20 18:00:32,018] - INFO - Waiting for option: 
+[2024-12-20 18:00:33,950] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:33,950] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:33,950] - INFO - Waiting for option: 
+[2024-12-20 18:00:33,950] - INFO - Waiting for option: 
+[2024-12-20 18:00:36,304] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:36,304] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:36,305] - INFO - Waiting for option: 
+[2024-12-20 18:00:36,305] - INFO - Waiting for option: 
+[2024-12-20 18:00:49,335] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 18:00:49,335] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 18:00:49,335] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 18:00:49,336] - INFO - Paths:
+[2024-12-20 18:00:49,336] - INFO - Paths:
+[2024-12-20 18:00:49,336] - INFO - Paths:
+[2024-12-20 18:00:49,336] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 18:00:49,336] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 18:00:49,336] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 18:00:49,336] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 18:00:49,336] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 18:00:49,336] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 18:00:49,336] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 18:00:49,336] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 18:00:49,336] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 18:00:49,336] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 18:00:49,336] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 18:00:49,336] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 18:00:49,336] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 18:00:49,336] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 18:00:49,336] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 18:00:49,336] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 18:00:49,336] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 18:00:49,336] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 18:00:49,336] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 18:00:49,336] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 18:00:49,336] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 18:00:49,336] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 18:00:49,336] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 18:00:49,336] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 18:00:49,336] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 18:00:49,336] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 18:00:49,336] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 18:00:49,336] - INFO - 	Dirfile name: dirfile_20241220_180049
+[2024-12-20 18:00:49,336] - INFO - 	Dirfile name: dirfile_20241220_180049
+[2024-12-20 18:00:49,336] - INFO - 	Dirfile name: dirfile_20241220_180049
+[2024-12-20 18:00:49,336] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 18:00:49,336] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 18:00:49,336] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 18:00:49,336] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:49,336] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:49,336] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:49,337] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 18:00:49,337] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 18:00:49,337] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 18:00:49,337] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:49,337] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:49,337] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:49,337] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 18:00:49,337] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 18:00:49,337] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 18:00:49,337] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:49,337] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:49,337] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:00:49,337] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 18:00:49,337] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 18:00:49,337] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 18:00:49,337] - INFO - Waiting for option: 
+[2024-12-20 18:00:49,337] - INFO - Waiting for option: 
+[2024-12-20 18:00:49,337] - INFO - Waiting for option: 
+[2024-12-20 18:06:03,999] - INFO - [35m **DEVELOPMENT MODE** 
+ Benchmark readout client
+Version 1.1[0m
+
+[2024-12-20 18:06:03,999] - INFO - Paths:
+[2024-12-20 18:06:03,999] - INFO - 	Logfile: /home/federico/Documents/GitHub/KID_readout/logs/log_dev_mode.log
+[2024-12-20 18:06:03,999] - INFO - 	Dirfiles: /media/federico/DATA/kids_acquisition_data/data_logger
+[2024-12-20 18:06:03,999] - INFO - 	Dirfile current: /media/federico/DATA/kids_acquisition_data/data_logger/dirfile_kids_current
+[2024-12-20 18:06:03,999] - INFO - 	Sweeps: /media/federico/DATA/kids_acquisition_data
+[2024-12-20 18:06:03,999] - INFO - 	VNAs: /media/federico/DATA/kids_acquisition_data/sweeps/vna
+[2024-12-20 18:06:03,999] - INFO - 	VNA current: /media/federico/DATA/kids_acquisition_data/sweeps/vna/current
+[2024-12-20 18:06:03,999] - INFO - 	Targets: /media/federico/DATA/kids_acquisition_data/sweeps/target
+[2024-12-20 18:06:03,999] - INFO - 	Target current: /media/federico/DATA/kids_acquisition_data/sweeps/target/current
+[2024-12-20 18:06:03,999] - INFO - 	path_configuration: /media/federico/DATA/kids_acquisition_data/target/current
+[2024-12-20 18:06:03,999] - INFO - 	Dirfile name: dirfile_20241220_180603
+[2024-12-20 18:06:03,999] - INFO - 
+	[33m+++  Setting up socket  +++[0m
+[2024-12-20 18:06:03,999] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:06:04,000] - INFO - 
+	[33m+++  Connecting to VALON...  +++[0m
+[2024-12-20 18:06:04,000] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:06:04,000] - INFO - 
+	[33m+++  Activating ROACH interface  +++[0m
+[2024-12-20 18:06:04,000] - INFO - [35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.[0m
+
+[2024-12-20 18:06:04,000] - INFO - Sampling frequency: 244.14Hz
+[2024-12-20 18:06:04,000] - INFO - Waiting for option: 

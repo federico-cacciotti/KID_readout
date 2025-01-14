@@ -20,7 +20,7 @@ import numpy as np
 import shutil
 #matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
-import casperfpga 
+#import casperfpga 
 #import corr
 from myQdr import Qdr as myQdr
 #import types
@@ -42,12 +42,12 @@ import configuration as conf
 
 # development mode flag
 # with the development mode active all the connections with peripheral devices are disabled
-DEV_MODE = False
+DEV_MODE = True
 dev_mode_active_message = "\033[35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.\033[0m\n"
 
 version = "1.1"
 if DEV_MODE:
-    version_string = "\033[35m **DEVELOPMENT MODE** Benchmark readout client\nVersion {:s}\033[0m\n".format(version)
+    version_string = "\033[35m **DEVELOPMENT MODE** \n Benchmark readout client\nVersion {:s}\033[0m\n".format(version)
 else:
     version_string = "\033[35mBenchmark readout client\nVersion {:s}\033[0m\n".format(version)
 
@@ -64,11 +64,14 @@ class roachInterface(object):
         string = 'dirfile_'+self.timestring
 
         # initialize logging file
-        log_filename = (conf.log_dir / (self.timestring+".log")).as_posix()
+        if not DEV_MODE:
+            log_filename = (conf.log_dir / (self.timestring+".log")).as_posix()
+        else:
+            log_filename = (conf.log_dir / ("log_dev_mode.log")).as_posix()
         self.log_filename = log_filename
         rootLogger = logging.getLogger()
         rootLogger.setLevel(logging.INFO)
-        fileFormatter = logging.Formatter("[%(asctime)s]:%(levelname)s:%(message)s")
+        fileFormatter = logging.Formatter("[%(asctime)s] - %(levelname)s - %(message)s")
         streamFormatter = logging.Formatter("%(message)s")
         fileHandler = logging.FileHandler(log_filename)
         fileHandler.setFormatter(fileFormatter)
@@ -127,32 +130,37 @@ class roachInterface(object):
         self.center_freq = conf.LO
         self.global_attenuation = 1.0 # need to implement the class for Arduino variable attenuator!
          
-        #self.zeros = signal.firwin(27, 1.5e6, window="hanning", nyq=0.5*conf.FPGA_SAMPLING_FREQUENCY)
-        #self.zeros = signal.firwin(29, 1.5e3, window="hanning", nyq=0.5*conf.FPGA_SAMPLING_FREQUENCY)
-        #self.zeros = self.zeros[1:-1]
-        self.zeros = signal.firwin(23, 10.0e3, window="hanning", nyq=0.5*conf.FPGA_SAMPLING_FREQUENCY)
+        #self.zeros = signal.firwin(23, 10.0e3, window="hanning", nyq=0.5*conf.FPGA_SAMPLING_FREQUENCY)
+        self.zeros = signal.firwin(23, 10.0e3, window="hamming", fs=0.5*conf.FPGA_SAMPLING_FREQUENCY)
 
         # setting up Valon, for some god forsaken reason, the VALON changes serial port. Here we cycle through the serial ports until it connects and sets the LO frequency correctly.
         logging.info("\n\t\033[33m+++  Connecting to VALON...  +++\033[0m")
-        port_attempt = 0
-        while(not self.connect_to_valon(port="/dev/ttyUSB{:d}".format(port_attempt))):
-            port_attempt += 1
-            if port_attempt == 10:
-                logging.inf0("Can't connect to Valon. Exiting program.")
-                sys.exit(0)
-
-        # setting up Arduino attenuators
-        logging.info("\n\t\033[33m+++  Connecting to Arduino attenuators...  +++\033[0m")
-        port_attempt = 0
-        while(not self.connect_to_arduino(port="/dev/ttyACM{:d}".format(port_attempt))):
-            port_attempt += 1
-            if port_attempt == 10:
-                logging.inf0("Can't connect to Arduino. Exiting program.")
-                sys.exit(0)
-
-        #self.nchan = len(self.raw_chan[0])
+        if not DEV_MODE:
+            port_attempt = 0
+            while(not self.connect_to_valon(port="/dev/ttyUSB{:d}".format(port_attempt))):
+                port_attempt += 1
+                if port_attempt == 10:
+                    logging.inf0("Can't connect to Valon. Exiting program.")
+                    sys.exit(0)
+    
+            # setting up Arduino attenuators
+            logging.info("\n\t\033[33m+++  Connecting to Arduino attenuators...  +++\033[0m")
+            port_attempt = 0
+            while(not self.connect_to_arduino(port="/dev/ttyACM{:d}".format(port_attempt))):
+                port_attempt += 1
+                if port_attempt == 10:
+                    logging.inf0("Can't connect to Arduino. Exiting program.")
+                    sys.exit(0)
+    
+            #self.nchan = len(self.raw_chan[0])
+        else:
+            logging.info(dev_mode_active_message)
+            
         logging.info("\n\t\033[33m+++  Activating ROACH interface  +++\033[0m")
-        self.fpga = casperfpga.katcp_fpga.KatcpFpga(conf.ROACH_IP ,timeout=1200.)
+        if not DEV_MODE:
+            self.fpga = casperfpga.katcp_fpga.KatcpFpga(conf.ROACH_IP ,timeout=1200.)
+        else:
+            logging.info(dev_mode_active_message)
 
         self.dac_freq_res = 0.5*(conf.DAC_SAMPLING_FREQUENCY/conf.LUT_BUFFER_LENGTH)
 
@@ -731,8 +739,8 @@ class roachInterface(object):
         by_hand = raw_input("set TF by hand (y/n)?")
         if by_hand == 'y':
             transfunc = np.zeros(nchannel)+1
-            chan = input("insert channel to change")
-            value = input("insert values to set [0, 1]")
+            chan = raw_input("insert channel to change")
+            value = raw_input("insert values to set [0, 1]")
             transfunc[chan] = value
         else:
 
@@ -1408,70 +1416,88 @@ class roachInterface(object):
         while True:
             opt = self.menu(self.main_prompt, self.main_opts)
             
-            if opt == 0:
+            if opt == 0 or opt == '0':
                 self.clearScreen()
-                self.initialize() 
+                if not DEV_MODE:
+                    self.initialize() 
+                else:
+                    logging.info(dev_mode_active_message)
                 
-            elif opt == 1:
-                print("Writing test comb ({:d} tones)".format(conf.NUMBER_OF_TEST_TONES))
-                self.writeQDR(self.test_comb, transfunc = False)
+            elif opt == 1 or opt == '1':
+                if not DEV_MODE:
+                    print("Writing test comb ({:d} tones)".format(conf.NUMBER_OF_TEST_TONES))
+                    self.writeQDR(self.test_comb, transfunc = False)
+                else:
+                    logging.info(dev_mode_active_message)
             
-            elif opt == 2:
+            elif opt == 2 or opt == '2':
                 self.print_useful_paths()
-                file_path = raw_input('Absolute path to bb_freqs.dat: ')
-                self.cold_array_bb = np.loadtxt(file_path)
+                file_path = Path(raw_input('Absolute path to bb_freqs.dat: '))
+                self.cold_array_bb = np.loadtxt((file_path / "bb_freqs.dat").as_posix())
                 self.cold_array_bb = self.cold_array_bb[self.cold_array_bb != 0]
                 rf_tones = (self.cold_array_bb + ((self.center_freq/conf.MIXER_CONST)*1.0e6))/1.0e6
                 print("Done")
 
-            elif opt == 3:
-                self.print_useful_paths()
-                file_path = raw_input('Absolute path to sweep_freqs.dat: ')
-                self.path_configuration = Path(file_path)
-                self.array_configuration()
-                self.writeQDR(self.cold_array_bb)
-
-            elif opt == 4:
-                Npackets = input('\nNumber of UDP packets to stream? ' )
-                chan = input('chan = ? ')
-                self.stream_UDP(chan, Npackets)
-                
-            elif opt == 5:
-                prompt = raw_input('Do plot after sweep? (y/n) ')
-                if prompt == 'y':
-                    self.vna_sweep(do_plot=True)
+            elif opt == 3 or opt == '3':
+                if not DEV_MODE:
+                    self.print_useful_paths()
+                    file_path = raw_input('Absolute path to sweep_freqs.dat: ')
+                    self.path_configuration = Path(file_path)
+                    self.array_configuration()
+                    self.writeQDR(self.cold_array_bb)
                 else:
-                    self.vna_sweep(do_plot=False)
-                fk.main(path=self.vnacurrentdir.as_posix(), savefile=True)
+                    logging.info(dev_mode_active_message)
+
+            elif opt == 4 or opt == '4':
+                if not DEV_MODE:
+                    Npackets = raw_input('\nNumber of UDP packets to stream? ' )
+                    chan = raw_input('chan = ? ')
+                    self.stream_UDP(chan, Npackets)
+                else:
+                    logging.info(dev_mode_active_message)
+                
+            elif opt == 5 or opt == '5':
+                if not DEV_MODE:
+                    prompt = raw_input('Do plot after sweep? (y/n) ')
+                    if prompt == 'y':
+                        self.vna_sweep(do_plot=True)
+                    else:
+                        self.vna_sweep(do_plot=False)
+                    fk.main(path=self.vnacurrentdir.as_posix(), savefile=True)
+                else:
+                    logging.info(dev_mode_active_message)
                     
-            elif opt == 6:
+            elif opt == 6 or opt == '6':
                 path = raw_input("Path to a VNA sweep (e.g. {:s})".format(self.vnacurrentdir.as_posix()))
                 fk.main(path, savefile=True)
 
-            elif opt == 7:
-                prompt = raw_input('Do plot after sweep? (y/n) ')
-                if prompt == 'y':
-                    self.target_sweep(do_plot=True)
+            elif opt == 7 or opt == '7':
+                if not DEV_MODE:
+                    prompt = raw_input('Do plot after sweep? (y/n) ')
+                    if prompt == 'y':
+                        self.target_sweep(do_plot=True)
+                    else:
+                        self.target_sweep(do_plot=False)
+                    print("Setting frequencies to the located values ")
+                    time.sleep(0.7)
+                    if self.do_transf == True:
+                        self.writeQDR(self.cold_array_bb, transfunc = True)
+                    else:
+                        self.writeQDR(self.cold_array_bb)
                 else:
-                    self.target_sweep(do_plot=False)
-                print("Setting frequencies to the located values ")
-                time.sleep(0.7)
-                if self.do_transf == True:
-                    self.writeQDR(self.cold_array_bb, transfunc = True)
-                else:
-                    self.writeQDR(self.cold_array_bb)
+                    logging.info(dev_mode_active_message)
                     
-            elif opt == 8:
-                self.global_attenuation=input("Insert global attenuation (decimal, <1.0, e.g 0.01)")
+            elif opt == 8 or opt == '8':
+                self.global_attenuation=raw_input("Insert global attenuation (decimal, <1.0, e.g 0.01): ")
 
-            elif opt == 9:
-                self.path_configuration = raw_input("Absolute path to a folder with freqs, centers, radii and rotations (e.g. /data/mistral/setup/kids/sweeps/target/current)")
+            elif opt == 9 or opt == '9':
+                self.path_configuration = raw_input("Absolute path to a folder with freqs, centers, radii and rotations (e.g. /data/mistral/setup/kids/sweeps/target/current): ")
                 self.array_configuration()
 
-            elif opt == 10:
+            elif opt == 10 or opt == '10':
                 if self.path_configuration=='':
                     print("Array configuration (freqs, centers, radii and rotations) undefined")
-                    self.path_configuration = raw_input("Absolute path to a folder with freqs, centers, radii and rotations (e.g.  /data/mistral/setup/kids/sweeps/target/current)")
+                    self.path_configuration = raw_input("Absolute path to a folder with freqs, centers, radii and rotations (e.g.  /data/mistral/setup/kids/sweeps/target/current): ")
                     self.array_configuration()
                 else: 
                     print("Using array configuration from" , self.path_configuration)
@@ -1487,18 +1513,19 @@ class roachInterface(object):
                 except KeyboardInterrupt:
                     pass 
 
-            elif opt == 11:
-                path_to_vna = raw_input("Absolute path to a VNA folder (e.g. /home/mew/data/setup/kids/sweeps/vna/current)")
+            elif opt == 11 or opt == '11':
+                path_to_vna = raw_input("Absolute path to a VNA folder (e.g. /home/mew/data/setup/kids/sweeps/vna/current): ")
                 self.plot_vna(path_to_vna)
                 
-            elif opt == 12:
-                path_to_target = raw_input("Absolute path to a Target folder (e.g. /home/mew/data/setup/kids/sweeps/target/current)")
+            elif opt == 12 or opt == '12':
+                path_to_target = raw_input("Absolute path to a Target folder (e.g. /home/mew/data/setup/kids/sweeps/target/current): ")
                 self.plot_targ(path_to_target)
 
-            elif opt == 13:
+            elif opt == 13 or opt == '13':
                 sys.exit()
                 
             else:
+                print("Invalid command.")
                 pass
         return
 

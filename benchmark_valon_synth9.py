@@ -365,5 +365,5 @@ class Synthesizer:
         self.conn.write(data)
         data = self.conn.read(100)
         self.conn.close()
-        print data
+        print(data)
         return True
