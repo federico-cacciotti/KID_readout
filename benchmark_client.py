@@ -42,7 +42,7 @@ import configuration as conf
 
 # development mode flag
 # with the development mode active all the connections with peripheral devices are disabled
-DEV_MODE = True
+DEV_MODE = False
 dev_mode_active_message = "\033[35m DEVELOPMENT MODE IS ACTIVE. DEVICE OR FEATURE NOT AVAILABLE.\033[0m\n"
 
 version = "1.1"
